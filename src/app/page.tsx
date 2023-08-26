@@ -1,16 +1,19 @@
 import Image from "next/image";
 import HeaderField from "./components/HeaderField";
 import bannerTop from "../assets/banners/banner-top.png";
-import bannerMid from "../assets/banners/banner-top.png";
+import bannerMid from "../assets/banners/banner-mid.png";
 import BrandField from "./components/BrandField";
 
-import firstGirl from "../assets/showcase/first-girl.png"
-import secondGirl from "../assets/showcase/second-girl.png"
-import thirdGirl from "../assets/showcase/third-girl.png"
+
+import ShowcaseCatalog from "./components/Showcase";
+import ShowcaseBanner from "./components/ShowcaseBanner";
 
 
-import { ArrowRight } from "lucide-react";
-//import { ArrowRight } from "lucide";
+import mobileAdvisement from "../assets/mobile-app.png"
+
+
+
+
 
 
 export default function Home() {
@@ -27,58 +30,26 @@ export default function Home() {
       <BrandField />
 
 
-      <section className="mx-24.5 my-16 flex flex-col gap-24">
-        <div className="text-5xl font-black"> NEW ARRIVALS </div>
 
-        <div className="flex justify-between"> 
-
-          <div className="flex flex-col gap-7 mr-3" >
-            <Image src={firstGirl} alt={`girl`} className=""/> 
-            <div className="flex items-center justify-between">
-              <div> 
-                <span className="text-2xl font-medium"> Hoodies & Sweetshirt </span>
-                <p className="text-2xl text-project-w"> Explore Now! </p>
-              </div>
-              <ArrowRight className="stroke-project-w"/>
-            </div>
-
-          </div>
-
-          <div className="flex flex-col gap-7 mr-3" >
-            <Image src={secondGirl} alt={`girl`} className=""/> 
-            <div className="flex items-center justify-between">
-              <div> 
-                <span className="text-2xl font-medium"> Hoodies & Sweetshirt </span>
-                <p className="text-2xl text-project-w"> Explore Now! </p>
-              </div>
-              <ArrowRight className="stroke-project-w"/>
-            </div>
-
-          </div>
+      {/* Campo de vitrine/showcase para 3 */}
+      <ShowcaseCatalog />
 
 
-          <div className="flex flex-col gap-7 mr-3" >
-            <Image src={thirdGirl} alt={`girl`} className=""/> 
-            <div className="flex items-center justify-between">
-              <div> 
-                <span className="text-2xl font-medium"> Hoodies & Sweetshirt </span>
-                <p className="text-2xl text-project-w"> Explore Now! </p>
-              </div>
-              <ArrowRight className="stroke-project-w"/>
-            </div>
 
-          </div>
+      <section className="flex gap-16">
+        <Image src={bannerMid} alt="aa" />
+      </section>
+    
+      {/* banners de vitrine */} 
+      <ShowcaseBanner />
 
+      <section className="flex justify-center items-center">
+        <div>
+          <span className="font-black">DOWNLOAD APP & GET THE VOUCHER! </span>
 
         </div>
+        <Image src={mobileAdvisement} alt="help"/>
       </section>
-
-
-
-
-
-
-
 
 
     </main>
