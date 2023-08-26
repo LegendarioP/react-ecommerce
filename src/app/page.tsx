@@ -51,7 +51,7 @@ export default function Home() {
 
     <footer>
 
-      {/* nesletter field with input to send */}
+      {/* Newsletter field with input to send */}
       <Newsletter />
 
       <FooterArea />
