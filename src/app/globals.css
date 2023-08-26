@@ -7,3 +7,7 @@ body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
+
+#newsletter:focus-within {
+    outline: 2px solid black;
+}
