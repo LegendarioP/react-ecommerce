@@ -7,9 +7,8 @@ import BrandField from "./components/BrandField";
 
 import ShowcaseCatalog from "./components/Showcase";
 import ShowcaseBanner from "./components/ShowcaseBanner";
-
-
-import mobileAdvisement from "../assets/mobile-app.png"
+import MobileApp from "./components/MobileLinks";
+import Newsletter from "./components/Newsletter";
 
 
 
@@ -43,16 +42,15 @@ export default function Home() {
       {/* banners de vitrine */} 
       <ShowcaseBanner />
 
-      <section className="flex justify-center items-center">
-        <div>
-          <span className="font-black">DOWNLOAD APP & GET THE VOUCHER! </span>
 
-        </div>
-        <Image src={mobileAdvisement} alt="help"/>
-      </section>
-
+      {/* Informação do campo mobile para playstore e apple store  */}
+      <MobileApp />
 
     </main>
+
+    <footer>
+      <Newsletter />
+    </footer>
     </>
   )
 }

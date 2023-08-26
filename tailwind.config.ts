@@ -18,7 +18,9 @@ const config: Config = {
       colors: {
         project: {
           'y' : '#ebd96b',
+          'y1': '#E5C643',
           'w' : '#C2C8DA',
+          'g' : '#7C7C7C'
         }
       },
       boxShadow: {

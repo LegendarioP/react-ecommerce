@@ -12,7 +12,9 @@ export default function ShowcaseBanner() {
             <div className="flex justify-between"> 
 
                 <div className="flex flex-col gap-7 mr-3 transition-all duration-300 ease-in-out hover:scale-105 group" >
-                    <Image src={showcase1} alt={`girl`} className="rounded-2xl group-hover:shadow-customH"/> 
+                    <div className="">
+                        <Image src={showcase1} alt={`girl`} className="rounded-2xl group-hover:shadow-customH"/> 
+                    </div>
                     <div className="flex items-center justify-between">
                         <div> 
                             <span className="text-2xl font-medium"> Trending on instagram </span>
@@ -23,7 +25,9 @@ export default function ShowcaseBanner() {
                 </div>
 
                 <div className="flex flex-col gap-7 mr-3 transition-all duration-300 ease-in-out hover:scale-105 group" >
-                    <Image src={showcase2} alt={`girl`} className="rounded-2xl group-hover:shadow-customH"/> 
+                    <div className="">
+                        <Image src={showcase2} alt={`girl`} className="rounded-2xl group-hover:shadow-customH"/> 
+                    </div>
                     <div className="flex items-center justify-between">
                         <div> 
                             <span className="text-2xl font-medium"> All Under $40 </span>
