@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import firstGirl from "../../assets/showcase/first-girl.png"
-import secondGirl from "../../assets/showcase/second-girl.png"
-import thirdGirl from "../../assets/showcase/third-girl.png"
+import firstGirl from "../assets/showcase/first-girl.png"
+import secondGirl from "../assets/showcase/second-girl.png"
+import thirdGirl from "../assets/showcase/third-girl.png"
 import { ArrowRight } from "lucide-react";
 
 

@@ -20,7 +20,8 @@ const config: Config = {
           'y' : '#ebd96b',
           'y1': '#E5C643',
           'w' : '#C2C8DA',
-          'g' : '#7C7C7C'
+          'g' : '#7C7C7C',
+          'g1' : '#8E8E8E',
         }
       },
       boxShadow: {

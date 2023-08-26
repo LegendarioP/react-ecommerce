@@ -1,14 +1,15 @@
 import Image from "next/image";
-import HeaderField from "./components/HeaderField";
+import HeaderField from "../components/HeaderField";
 import bannerTop from "../assets/banners/banner-top.png";
 import bannerMid from "../assets/banners/banner-mid.png";
-import BrandField from "./components/BrandField";
+import BrandField from "../components/BrandField";
 
 
-import ShowcaseCatalog from "./components/Showcase";
-import ShowcaseBanner from "./components/ShowcaseBanner";
-import MobileApp from "./components/MobileLinks";
-import Newsletter from "./components/Newsletter";
+import ShowcaseCatalog from "../components/Showcase";
+import ShowcaseBanner from "../components/ShowcaseBanner";
+import MobileApp from "../components/MobileLinks";
+import Newsletter from "../components/Newsletter";
+import FooterArea from "../components/FooterField";
 
 
 
@@ -49,7 +50,11 @@ export default function Home() {
     </main>
 
     <footer>
+
+      {/* nesletter field with input to send */}
       <Newsletter />
+
+      <FooterArea />
     </footer>
     </>
   )

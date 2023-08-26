@@ -1,12 +1,12 @@
 import Image from "next/image";
 // IMAGES IMPORTATIONS
 
-import mm from "../../assets/mm.png"
-import obey from "../../assets/obey.png"
-import shopify from "../../assets/shopify.png"
-import lacoste from "../../assets/lacoste.png"
-import levi from "../../assets/levis.png"
-import amazon from "../../assets/amazon.png"
+import mm from "../assets/mm.png"
+import obey from "../assets/obey.png"
+import shopify from "../assets/shopify.png"
+import lacoste from "../assets/lacoste.png"
+import levi from "../assets/levis.png"
+import amazon from "../assets/amazon.png"
 
 
 export default function BrandField(){

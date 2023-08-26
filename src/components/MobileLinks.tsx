@@ -1,8 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
-import mobileAdvisement from "../../assets/mobile-app.png"
-import appleApp from "../../assets/applestore.png"
-import playStore from "../../assets/playstore.png"
+import mobileAdvisement from "../assets/mobile-app.png"
+import appleApp from "../assets/applestore.png"
+import playStore from "../assets/playstore.png"
 
 
 

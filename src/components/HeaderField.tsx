@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import brandLogo from '../../assets/icon.svg'
+import brandLogo from '../assets/icon.svg'
 
 
 export default function HeaderField(){

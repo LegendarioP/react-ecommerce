@@ -1,6 +1,6 @@
 import Image from "next/image";
-import showcase1 from '../../assets/showcase/vitrine1.png'
-import showcase2 from '../../assets/showcase/vitrine2.png'
+import showcase1 from '../assets/showcase/vitrine1.png'
+import showcase2 from '../assets/showcase/vitrine2.png'
 import { ArrowRight } from "lucide-react";
 
 
