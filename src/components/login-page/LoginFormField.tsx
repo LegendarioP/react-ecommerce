@@ -13,7 +13,7 @@ export default function LoginOrRegisterField() {
     }
 
     return (
-        <div className={`container bg-white rounded-[.625rem] relative overflow-hidden w-[48rem] max-w-full min-h-[30rem] ${isSignUp ? 'right-panel-active' : ''}`} id="toggleButton">
+        <div className={`shadow-customLogin bg-white rounded-[.625rem] relative overflow-hidden w-[48rem] max-w-full min-h-[30rem] ${isSignUp ? 'right-panel-active' : ''}`} id="toggleButton">
 
             {isSignUp ? (
                 <div className={`left-0 w-1/2 z-30 translate-x-full absolute top-0 h-full transition-all duration-[600ms] ease-in-out `}>
@@ -47,16 +47,16 @@ export default function LoginOrRegisterField() {
             ) }
 
 
-            <div className={`overlay-container absolute top-0 left-1/2 w-1/2 h-full overflow-hidden transition-transform ease-in-out duration-[600ms] z-40 ${isSignUp ? '-translate-x-full' : ''}`}>
-                <div className={`overlay linear-gradient-yellow bg-no-repeat bg-cover bg-[0] relative text-white -left-full h-full w-[200%]  transition-transform ease-in-out duration-[600ms] ${isSignUp ? 'translate-x-1/2' : 'translate-x-0'}`}>
+            <div className={`absolute top-0 left-1/2 w-1/2 h-full overflow-hidden transition-transform ease-in-out duration-[600ms] z-40 ${isSignUp ? '-translate-x-full' : ''}`}>
+                <div className={`linear-gradient-yellow bg-no-repeat bg-cover bg-[0] relative text-white -left-full h-full w-[200%]  transition-transform ease-in-out duration-[600ms] ${isSignUp ? 'translate-x-1/2' : 'translate-x-0'}`}>
                     {isSignUp ? (
-                        <div className="overlay-panel absolute flex flex-col items-center justify-center px-10 top-0 h-full w-1/2 translate-x-0 text-black">
+                        <div className="absolute flex flex-col items-center justify-center px-10 top-0 h-full w-1/2 translate-x-0 text-black">
                             <h1 className="font-bold m-0">Welcome Back!</h1>
                             <p className="text-sm font-thin leading-5 tracking-[.5px] mt-5 mb-[1.875rem]">To keep connected with us please login with your personal info</p>
                             <button className="rounded-[1.25rem] border border-solid border-black bg-transparent text-black font-bold uppercase py-3 px-11 tracking-[1px] text-xs" onClick={ToggleRegister} >Sign In</button>
                         </div>
                         ) : (
-                        <div className="overlay-panel absolute flex flex-col items-center justify-center px-10 top-0 h-full w-1/2 translate-x-0 right-0" >
+                        <div className="absolute flex flex-col items-center justify-center px-10 top-0 h-full w-1/2 translate-x-0 right-0" >
                             <h1 className="font-bold m-0">Hello, Friend!</h1>
                             <p className="text-sm font-thin leading-5 tracking-[.5px] mt-5 mb-[1.875rem]">Enter your personal details and start the journey with us</p>
                             <button className="rounded-[1.25rem] border border-solid border-white bg-transparent text-white font-bold uppercase py-3 px-11 tracking-[1px] text-xs" onClick={ToggleRegister}>Sign Up</button>

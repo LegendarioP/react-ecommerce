@@ -28,8 +28,9 @@ const config: Config = {
         }
       },
       boxShadow: {
-        'customS' : 'box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08)',
-        'customH' : '2px 4px 12px rgba(0, 0, 0, 0.24)'
+        'customS' : '2px 4px 12px rgba(0, 0, 0, 0.08)',
+        'customH' : '2px 4px 12px rgba(0, 0, 0, 0.24)',
+        'customLogin' : '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)'
       },
     },
   },
