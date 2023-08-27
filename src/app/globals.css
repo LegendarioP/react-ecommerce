@@ -11,3 +11,8 @@ body {
 #newsletter:focus-within {
     outline: 2px solid black;
 }
+
+.linear-gradient-yellow {
+    background-image: linear-gradient(to right, #ebd96b, #ab8a00);
+    background-image: -webkit-linear-gradient(to right, #ebd96b, #ab8a00);
+}

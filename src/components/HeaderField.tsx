@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import brandLogo from '../assets/icon.svg'
+import Link from 'next/link'
 
 
 export default function HeaderField(){
@@ -17,8 +18,9 @@ export default function HeaderField(){
               <li className="">LIFESTYLE</li>
             </ul>
 
-            <div>
-              <button className="w-[8.375rem] h-16 bg-black text-white rounded-lg text-[1.5rem]">SIGN UP</button>
+            <div className='flex items-center justify-center'>
+              <Link href="/pages/login" className="w-[8.375rem] h-16 bg-black text-white rounded-lg text-[1.5rem] flex items-center justify-center">SIGN UP</Link>
+              {/* <button href="/pages/login" className="w-[8.375rem] h-16 bg-black text-white rounded-lg text-[1.5rem]">SIGN UP</button> */}
             </div>
           </div>
         </div>
