@@ -1,12 +1,24 @@
 import fastify from 'fastify'
+import cors from '@fastify/cors'
+import { usersRoutes } from './routes/register'
+import { authRoutes } from './routes/auth'
+
+
 
 const app = fastify()
 
 
-app.get('/hello', () => {
-    return 'Hello World'
 
+
+app.register(cors, {
+    origin: true,
 })
+
+app.register(authRoutes)
+app.register(usersRoutes)
+
+
+
 
 
 
