@@ -2,36 +2,98 @@
 
 import Link from "next/link";
 import SocialLogin from "./SocialLogin";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+
+
+import { api } from "@/lib/api";
+import { AxiosError } from "axios";
 
 export default function LoginOrRegisterField() {
 
     const [isSignUp, setIsSignUp] = useState(false)
+    const [isAlreadyRegistered, setIsAlreadyRegistered] = useState(false)
+    const [isSubmitted, setIsSubmitted] = useState(false)
+
 
     function ToggleRegister() {
         setIsSignUp(!isSignUp) 
     }
 
+
+
+    function AlreadyHaveAccount() {
+        setIsAlreadyRegistered(!isAlreadyRegistered)
+    }
+
+
+
+    async function handleRegisterUser(event: FormEvent<HTMLFormElement>){
+        event.preventDefault()
+        setIsSubmitted(true)
+        setIsAlreadyRegistered(false)
+
+        const formData = new FormData(event.currentTarget)
+
+
+        try {
+
+            await api.post('/users', {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                password: formData.get('pass')
+            })
+
+        }
+        catch (error) {
+            if (error instanceof AxiosError && error.response) {
+              if (error.response.status === 409) {
+                // Erro de conflito - usuário já existe
+                AlreadyHaveAccount()
+                //alert('O usuário com este email já existe. Por favor, escolha um email diferente ou faça login.');
+              } 
+              else {
+                // Ocorreu algum erro no servidor
+                alert('Ocorreu um erro ao criar sua conta. Por favor, tente novamente mais tarde.');
+              }
+            } 
+            else {
+              // Se não for um erro do Axios, faça algo com o erro genérico
+              alert('Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.');
+            }
+          }
+          finally {
+            //alert("operação finalizada")
+            setIsSubmitted(false)
+          }
+
+
+    }
+
+
+
+
+
     return (
         <div className={`shadow-customLogin bg-white rounded-[.625rem] relative overflow-hidden w-[48rem] max-w-full min-h-[30rem]`} id="toggleButton">
-
+            
             {isSignUp ? (
                 <div className={`left-0 w-1/2 z-30 translate-x-full absolute top-0 h-full transition-all duration-[600ms] ease-in-out `}>
-                    <form action="#" className='flex bg-white items-center justify-center flex-col px-[3.125rem] text-center h-full'>
+                    <form onSubmit={handleRegisterUser} className='flex bg-white items-center justify-center flex-col px-[3.125rem] text-center h-full'>
                         <h2 className='text-[2rem] font-bold'>Create Account</h2>
     
                         <SocialLogin />
     
                         <span className='text-xs'>or use your email for registration</span>
-                        <input type="text" placeholder="Name" className='bg-[#eee] border-none px-4 py-3 m-2 w-full' />
-                        <input type="email" placeholder="Email" className='bg-[#eee] border-none px-4 py-3 m-2 w-full' />
-                        <input type="password" placeholder="Password" className='bg-[#eee] border-none px-4 py-3 m-2 w-full' />
-                        <button className='rounded-[1.25rem] border border-solid border-black bg-black text-white font-bold uppercase py-3 px-11 tracking-[1px] text-xs'>Sign Up</button>
+                        <input name="name" type="text" placeholder="Name" className='bg-[#eee] border-none px-4 py-3 m-2 w-full' required />
+                        <input name="email" type="email" placeholder="Email" className='bg-[#eee] border-none px-4 py-3 m-2 w-full' required />
+                        <input name="pass" type="password" placeholder="Password" className='bg-[#eee] border-none px-4 py-3 m-2 w-full' required/>
+                        <button  onClick={isAlreadyRegistered ? AlreadyHaveAccount : undefined }   className='rounded-[1.25rem] border border-solid border-black bg-black text-white font-bold uppercase py-3 px-11 tracking-[1px] text-xs'> { isSubmitted ? (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>) : 'Sign Up'} </button>
+                        {isAlreadyRegistered ? ( <p className="font-bold text-sm text-red-600 "> O usuário com este email já existe. Por favor, escolha um email diferente ou faça login.</p>) : (' ')}
                     </form>
                 </div>
             ) : (
                 <div className={`left-0 w-1/2 z-20 absolute top-0 h-full transition-all duration-[600ms] ease-in-out `}>
-                    <form action="#" className='flex bg-white items-center justify-center flex-col px-[3.125rem] text-center h-full' >
+                    <form className='flex bg-white items-center justify-center flex-col px-[3.125rem] text-center h-full' >
                         <h2 className='text-[2rem] font-bold'>Sign In</h2>
                         
                         <SocialLogin />
@@ -40,7 +102,7 @@ export default function LoginOrRegisterField() {
                         <input type="email" placeholder="Email" className='bg-[#eee] border-none px-4 py-3 m-2 w-full' />
                         <input type="password" placeholder="Password" className='bg-[#eee] border-none px-[.938rem] py-3 m-2 w-full' />
                         <Link href="#" className='my-4'>Forgot your password?</Link>
-                        <button className='rounded-[1.25rem] border border-solid border-black bg-black text-white font-bold uppercase py-3 px-11 tracking-[1px] text-xs'>Sign In</button>
+                        <button type="submit" className='rounded-[1.25rem] border border-solid border-black bg-black text-white font-bold uppercase py-3 px-11 tracking-[1px] text-xs'>Sign In</button>
                     </form>
                 </div>
                 ) 
