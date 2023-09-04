@@ -1,7 +1,8 @@
 import fastify from 'fastify'
 import cors from '@fastify/cors'
-import { usersRoutes } from './routes/register'
-import { authRoutes } from './routes/auth'
+import { registerRoute } from './routes/register'
+import { loginRoute } from './routes/login'
+// import { authRoutes } from './routes/auth'
 
 
 
@@ -14,9 +15,9 @@ app.register(cors, {
     origin: true,
 })
 
-app.register(authRoutes)
-app.register(usersRoutes)
-
+// app.register(authRoutes)
+app.register(registerRoute)
+app.register(loginRoute)
 
 
 

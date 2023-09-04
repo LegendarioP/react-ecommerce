@@ -9,7 +9,6 @@ import { api } from "@/lib/api";
 import { AxiosError } from "axios";
 
 export default function LoginOrRegisterField() {
-
     const [isSignUp, setIsSignUp] = useState(false)
     const [isAlreadyRegistered, setIsAlreadyRegistered] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
@@ -36,8 +35,7 @@ export default function LoginOrRegisterField() {
 
 
         try {
-
-            await api.post('/users', {
+            await api.post('/register', {
                 name: formData.get('name'),
                 email: formData.get('email'),
                 password: formData.get('pass')
@@ -70,6 +68,37 @@ export default function LoginOrRegisterField() {
     }
 
 
+    async function handleLoginUser(event: FormEvent<HTMLFormElement>){
+        event.preventDefault()
+        const formData = new FormData(event.currentTarget)
+        
+        try {
+            await api.post('/login', {
+                email: formData.get('email'),
+                password: formData.get('pass')
+            })
+
+        }
+        catch(error){
+            if (error instanceof AxiosError && error.response) {
+                if (error.response.status === 401) {
+                    alert('senha incorreta se cabaço')
+                }   
+                else if (error.response.status === 404) {
+                    alert('usuario não encontrado no banco')
+                }
+                else{
+                    alert('erro de conexão com o servidor')
+                }
+            }
+            else {
+                alert('ocorreu algum erro desconhecido, tente novamente em alguns minutos')
+            }
+        }
+    }
+
+
+
 
 
 
@@ -77,6 +106,7 @@ export default function LoginOrRegisterField() {
         <div className={`shadow-customLogin bg-white rounded-[.625rem] relative overflow-hidden w-[48rem] max-w-full min-h-[30rem]`} id="toggleButton">
             
             {isSignUp ? (
+                // CAMPO DE REGISTRAR-SE
                 <div className={`left-0 w-1/2 z-30 translate-x-full absolute top-0 h-full transition-all duration-[600ms] ease-in-out `}>
                     <form onSubmit={handleRegisterUser} className='flex bg-white items-center justify-center flex-col px-[3.125rem] text-center h-full'>
                         <h2 className='text-[2rem] font-bold'>Create Account</h2>
@@ -92,15 +122,16 @@ export default function LoginOrRegisterField() {
                     </form>
                 </div>
             ) : (
+                // CAMPO DE LOGIN 
                 <div className={`left-0 w-1/2 z-20 absolute top-0 h-full transition-all duration-[600ms] ease-in-out `}>
-                    <form className='flex bg-white items-center justify-center flex-col px-[3.125rem] text-center h-full' >
+                    <form onSubmit={handleLoginUser} className='flex bg-white items-center justify-center flex-col px-[3.125rem] text-center h-full' >
                         <h2 className='text-[2rem] font-bold'>Sign In</h2>
                         
                         <SocialLogin />
 
                         <span className='text-xs'>or use your account</span>
-                        <input type="email" placeholder="Email" className='bg-[#eee] border-none px-4 py-3 m-2 w-full' />
-                        <input type="password" placeholder="Password" className='bg-[#eee] border-none px-[.938rem] py-3 m-2 w-full' />
+                        <input name="email" type="email" placeholder="Email" className='bg-[#eee] border-none px-4 py-3 m-2 w-full' />
+                        <input name="pass" type="password" placeholder="Password" className='bg-[#eee] border-none px-[.938rem] py-3 m-2 w-full' />
                         <Link href="#" className='my-4'>Forgot your password?</Link>
                         <button type="submit" className='rounded-[1.25rem] border border-solid border-black bg-black text-white font-bold uppercase py-3 px-11 tracking-[1px] text-xs'>Sign In</button>
                     </form>
